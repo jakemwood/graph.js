@@ -58,4 +58,15 @@ suite('Graph', function() {
 			assert.equal(graph2.nodes.length, 7);
 		});
 	});
+	
+	suite('find path', function() {
+		test('from point a to a', function() {
+			var findPath = testGraph.findPath('a', 'a');
+			assert.equal(findPath.length, 1);
+			findPath = findPath[0];
+			assert.equal(findPath.from, 'a');
+			assert.equal(findPath.to, 'a');
+			assert.equal(findPath.cost, 0);
+		});
+	});
 });
