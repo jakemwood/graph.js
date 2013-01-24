@@ -2,7 +2,7 @@
   "name": "Graph.js",
   "version": "0.0.0",
   "description": "A directed graph library",
-  "main": "index.js",
+  "main": "./lib/index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
