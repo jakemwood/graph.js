@@ -37,34 +37,6 @@ suite('Graph', function() {
 		});
 	});
 	
-	suite('hasNode', function() {
-		test('should return true after an addEdge', function() {
-			assert.equal(true, testGraph.hasNode('a'));
-			assert.equal(true, testGraph.hasNode('b'));
-			assert.equal(false, testGraph.hasNode('zzz'));
-		});
-	});
-	
-	suite('getEdges', function() {
-		test('should return "b" and "c" when called on "a"', function() {
-			assert.equal(testGraph.getEdgesFrom('a').length, 1);
-			// TODO: more detailed tests
-		});
-		test('should return "c" when called on "a"', function() {
-			assert.equal(testGraph.getEdgesTo('b').length, 1);
-			// TODO : more detailed tests
-		});
-	});
-	
-	suite('getDirectCost', function() {
-		test('should return 10 between \'a\' and \'b\'', function() {
-			assert.equal(testGraph.getDirectCost('a', 'b'), 10);
-		});
-		test('should return null between \'a\' and \'d\'', function() {
-			assert.equal(testGraph.getDirectCost('a', 'd'), null);
-		});
-	});
-	
 	suite('join graph', function() {
 		test('should not allow two graphs of unequal cost intervals to join', function() {
 			var graph2 = new Graph(0, 100000);
