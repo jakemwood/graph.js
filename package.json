@@ -18,6 +18,7 @@
   "author": "Jake Wood and James Steinberg",
   "license": "BSD",
   "devDependencies": {
-	  "mocha": "*"
+	  "mocha": "*",
+	  "jscoveage": "*"
   }
 }
