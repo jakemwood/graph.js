@@ -1,0 +1,1 @@
+module.exports = process.env.GRAPH_COV ? require('./lib-cov/index') : require('./lib/index');
