@@ -1,0 +1,24 @@
+{
+  "name": "Graph.js",
+  "version": "0.0.0",
+  "description": "A directed graph library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yakkob/Graph.js.git"
+  },
+  "keywords": [
+    "graph",
+    "node",
+    "node",
+    "graph",
+    "node",
+    "graph",
+    "library"
+  ],
+  "author": "Jake Wood and James Steinberg",
+  "license": "BSD"
+}
