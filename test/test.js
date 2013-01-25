@@ -115,12 +115,16 @@ suite('Graph', function() {
 			mbta.addEdge('Arlington', 'Park Street', 2);
 			
 			mbta.addEdge('Ruggles', 'Mass Ave', 1);
-			mbta.addEdge('Mass Ave', 'Tufts Med', 1);
+			mbta.addEdge('Mass Ave', 'Back Bay', 1);
+			mbta.addEdge('Back Bay', 'Tufts Med', 1);
 			mbta.addEdge('Tufts Med', 'Chinatown', 1);
 			mbta.addEdge('Chinatown', 'Downtown Crossing', 1);
 			
-			mbta.addEdge('Park Street', 'Work', 2);
-			mbta.addEdge('Downtown Crossing', 'Work', 1);
+			mbta.addEdge('Downtown Crossing', 'South Station', 1);
+			
+			mbta.addEdge('Park Street', 'Work', 3);
+			mbta.addEdge('Downtown Crossing', 'Work', 2);
+			mbta.addEdge('South Station', 'Work', 1);
 		});
 		test('from point a to a', function() {
 			var findPath = testGraph.findPath('a', 'a');
@@ -134,10 +138,11 @@ suite('Graph', function() {
 			assert.deepEqual(mbta.findPath('Home', 'Work'), [
 				{ from: 'Home', to: 'Ruggles', cost: 3 },
 				{ from: 'Ruggles', to: 'Mass Ave', cost: 1 },
-				{ from: 'Mass Ave', to: 'Tufts Med', cost: 1 },
+				{ from: 'Mass Ave', to: 'Back Bay', cost: 1 },
+				{ from: 'Back Bay', to: 'Tufts Med', cost: 1 },
 				{ from: 'Tufts Med', to: 'Chinatown', cost: 1 },
 				{ from: 'Chinatown', to: 'Downtown Crossing', cost: 1 },
-				{ from: 'Downtown Crossing', to: 'Work', cost: 1 }
+				{ from: 'Downtown Crossing', to: 'Work', cost: 2 }
 			]);
 		});
 		test("from Symphony to Arlington", function() {
@@ -148,8 +153,11 @@ suite('Graph', function() {
 				{ from: 'Boylston', to: 'Arlington', cost: 2 }
 			]);
 		});
-		test('from Symphony to Ruggles', function() {
+		test('from Symphony to Ruggles should not return a path (there is no path)', function() {
 			assert.deepEqual(mbta.findPath('Symphony', 'Ruggles'), []);
+		});
+		test('from Work to Home (there is no path, but only because this graph is directed)', function() {
+			assert.deepEqual(mbta.findPath('Work', 'Home'), []);
 		});
 	});
 });
