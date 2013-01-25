@@ -34,7 +34,9 @@ suite('Graph', function() {
 			assert.equal(100, testGraph.high);
 		});
 		test('should fail if letters are provided', function() {
-			//assert.throws(new Graph('abc', 123), new Error('Invalid cost interval'));
+			assert.throws(function() {
+				return new Graph('abc', 123);
+			}, 'Invalid cost interval');
 		});
 	});
 	
@@ -71,7 +73,9 @@ suite('Graph', function() {
 			assert.equal(asserttest, "Violates cost interval");
 			assert.equal(testGraph.edges.length, 3);
 		});
-		
+		test('should fail if cost is not a number', function() {
+			assert.equal(testGraph.addEdge('c', 'a', 'abc'), 'Cost is not a number');
+		});
 	});
 	
 	suite('join graph', function() {
