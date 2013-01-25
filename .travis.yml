@@ -3,4 +3,5 @@ before_install:
 
 language: node.js
 node_js:
- - "0.8"
+ - 0.8
+ - 0.6
