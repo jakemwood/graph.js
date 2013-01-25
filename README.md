@@ -1,7 +1,7 @@
 Graph.js
 ========
 
-[![Build Status](https://travis-ci.org/yakkob/graph.js.png?branch=master)](https://travis-ci.org/yakkob/graph.js) | [Test Coverage Report](https://raw.github.com/yakkob/graph.js/master/test_coverage.html)
+[![Build Status](https://travis-ci.org/yakkob/graph.js.png?branch=master)](https://travis-ci.org/yakkob/graph.js) | [Test Coverage Report](http://htmlpreview.github.com/?https://github.com/yakkob/graph.js/blob/master/test_coverage.html)
 
 ## Authors
 This library was written by Jake Wood and James Steinberg for a Software Development (CS 6515) class at Northeastern University.
