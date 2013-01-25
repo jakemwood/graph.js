@@ -2,7 +2,7 @@ var assert = require("assert");
 suite('Graph', function() {
 
 	var Graph = require("../index");
-	var testGraph, testGraph2, testGraph3, testGraph4, testGraph5;
+	var testGraph, testGraph2, testGraph3, testGraph4, testGraph5, mbta;
 	
 	setup(function() {
 		testGraph = new Graph(0, 100);
@@ -97,6 +97,27 @@ suite('Graph', function() {
 	});
 	
 	suite('find path', function() {
+		setup(function() {
+			mbta = new Graph(0, 10);
+			
+			mbta.addEdge('Home', 'Northeastern', 1);
+			mbta.addEdge('Home', 'Ruggles', 3);
+			
+			mbta.addEdge('Northeastern', 'Symphony', 2);
+			mbta.addEdge('Symphony', 'Prudential', 2);
+			mbta.addEdge('Prudential', 'Copley', 2);
+			mbta.addEdge('Copley', 'Boylston', 2);
+			mbta.addEdge('Boylston', 'Arlington', 2);
+			mbta.addEdge('Arlington', 'Park Street', 2);
+			
+			mbta.addEdge('Ruggles', 'Mass Ave', 1);
+			mbta.addEdge('Mass Ave', 'Tufts Med', 1);
+			mbta.addEdge('Tufts Med', 'Chinatown', 1);
+			mbta.addEdge('Chinatown', 'Downtown Crossing', 1);
+			
+			mbta.addEdge('Park Street', 'Work', 2);
+			mbta.addEdge('Downtown Crossing', 'Work', 1);
+		});
 		test('from point a to a', function() {
 			var findPath = testGraph.findPath('a', 'a');
 			assert.equal(findPath.length, 1);
@@ -104,6 +125,27 @@ suite('Graph', function() {
 			assert.equal(findPath.from, 'a');
 			assert.equal(findPath.to, 'a');
 			assert.equal(findPath.cost, 0);
+		});
+		test('from home to work', function() {
+			assert.deepEqual(mbta.findPath('Home', 'Work'), [
+				{ from: 'Home', to: 'Ruggles', cost: 3 },
+				{ from: 'Ruggles', to: 'Mass Ave', cost: 1 },
+				{ from: 'Mass Ave', to: 'Tufts Med', cost: 1 },
+				{ from: 'Tufts Med', to: 'Chinatown', cost: 1 },
+				{ from: 'Chinatown', to: 'Downtown Crossing', cost: 1 },
+				{ from: 'Downtown Crossing', to: 'Work', cost: 1 }
+			]);
+		});
+		test("from Symphony to Arlington", function() {
+			assert.deepEqual(mbta.findPath('Symphony', 'Arlington'), [
+				{ from: 'Symphony', to: 'Prudential', cost: 2 },
+				{ from: 'Prudential', to: 'Copley', cost: 2 },
+				{ from: 'Copley', to: 'Boylston', cost: 2 },
+				{ from: 'Boylston', to: 'Arlington', cost: 2 }
+			]);
+		});
+		test('from Symphony to Ruggles', function() {
+			assert.deepEqual(mbta.findPath('Symphony', 'Ruggles'), []);
 		});
 	});
 });
