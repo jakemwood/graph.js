@@ -12,13 +12,12 @@
   },
   "keywords": [
     "graph",
-    "directed",
-    "directed graph"
+    "directed"
   ],
   "author": "Jake Wood and James Steinberg",
   "license": "BSD",
   "devDependencies": {
 	  "mocha": "*",
-	  "jscoveage": "*"
+	  "jscoverage": "*"
   }
 }

@@ -1,6 +1,3 @@
-before_install:
- - npm install mocha
-
 language: node_js
 node_js:
  - 0.8
