@@ -1,6 +1,6 @@
 test-coverage:
 	rm -rf lib-cov
 	jscoverage lib lib-cov
-	@GRAPH_COV=1 mocha -u tdd --reporter html-cov > lib-cov/coverage.html
+	@GRAPH_COV=1 mocha -u tdd --reporter html-cov > ./test_coverage.html
 
 .PHONY: test-coverage
