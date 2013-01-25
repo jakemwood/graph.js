@@ -1,5 +1,5 @@
 before_install:
- - sudo npm install mocha
+ - npm install mocha
 
 language: node_js
 node_js:
