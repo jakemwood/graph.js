@@ -1,6 +1,8 @@
 Graph.js
 ========
 
+[![Build Status](https://travis-ci.org/yakkob/graph.js.png?branch=master)](https://travis-ci.org/yakkob/graph.js)
+
 ## Authors
 This library was written by Jake Wood and James Steinberg for a Software Development (CS 6515) class at Northeastern University.
 
