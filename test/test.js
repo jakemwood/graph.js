@@ -2,19 +2,39 @@ var assert = require("assert");
 suite('Graph', function() {
 
 	var Graph = require("../index");
-	var testGraph;
+	var testGraph, testGraph2, testGraph3, testGraph4, testGraph5;
 	
 	setup(function() {
 		testGraph = new Graph(0, 100);
 		testGraph.addEdge('a', 'b', 10);
 		testGraph.addEdge('b', 'c', 10);
 		testGraph.addEdge('b', 'd', 20);
+		
+		testGraph2 = new Graph(0, 100);
+		testGraph2.addEdge('a', 'b', 10);
+		testGraph2.addEdge('b', 'c', 10);
+		
+		testGraph3 = new Graph(0, 100);
+		testGraph3.addEdge('a', 'b', 10);
+		testGraph3.addEdge('c', 'b', 10);
+		
+		testGraph4 = new Graph(0, 100);
+		testGraph4.addEdge('b', 'a', 10);
+		testGraph4.addEdge('c', 'b', 10);
+		
+		testGraph5 = new Graph(0, 100);
+		testGraph5.addEdge('b', 'a', 10);
+		testGraph5.addEdge('b', 'c', 10);
+		
 	});
 	
 	suite("costInterval", function() {
 		test("should equal 0, 10", function() {
 			assert.equal(0, testGraph.low);
 			assert.equal(100, testGraph.high);
+		});
+		test('should fail if letters are provided', function() {
+			//assert.throws(new Graph('abc', 123), new Error('Invalid cost interval'));
 		});
 	});
 	
@@ -29,12 +49,29 @@ suite('Graph', function() {
 			var asserttest = testGraph.addEdge('c', 'a', 25);
 			assert.equal(asserttest, "Violates triangle inequality");
 			assert.equal(testGraph.edges.length, 3);
+			
+			asserttest = testGraph2.addEdge('a', 'c', 25);
+			assert.equal(asserttest, "Violates triangle inequality");
+			assert.equal(testGraph2.edges.length, 2);
+
+			asserttest = testGraph3.addEdge('a', 'c', 25);
+			assert.equal(asserttest, "Violates triangle inequality");
+			assert.equal(testGraph3.edges.length, 2);
+
+			asserttest = testGraph4.addEdge('a', 'c', 25);
+			assert.equal(asserttest, "Violates triangle inequality");
+			assert.equal(testGraph4.edges.length, 2);
+
+			asserttest = testGraph5.addEdge('a', 'c', 25);
+			assert.equal(asserttest, "Violates triangle inequality");
+			assert.equal(testGraph5.edges.length, 2);
 		});
 		test('should fail on cost interval', function() {
 			var asserttest = testGraph.addEdge('c', 'a', 1500);
 			assert.equal(asserttest, "Violates cost interval");
 			assert.equal(testGraph.edges.length, 3);
 		});
+		
 	});
 	
 	suite('join graph', function() {
