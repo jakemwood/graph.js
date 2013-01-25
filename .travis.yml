@@ -1,3 +1,6 @@
+before_install:
+ - sudo npm install mocha
+
 language: node.js
 node_js:
  - "0.8"
